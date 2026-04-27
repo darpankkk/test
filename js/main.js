@@ -1,29 +1,27 @@
 /* ============================================================
-   Darpan Studio â€” Main JavaScript
+   Darpan Studio — Main JavaScript
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ----------------------------------------------------------
-       Bottom Navigation â€” active state highlight
+       Bottom Navigation — active state highlight
     ---------------------------------------------------------- */
     const navItems = document.querySelectorAll('[data-nav]');
 
     navItems.forEach(item => {
         item.addEventListener('click', () => {
-            // Remove active state from all items
             navItems.forEach(i => {
                 i.classList.remove('text-red-600', 'font-bold', 'scale-110');
                 i.classList.add('text-[#e5e2e1]/40');
             });
-            // Apply active state to clicked item
             item.classList.add('text-red-600', 'font-bold', 'scale-110');
             item.classList.remove('text-[#e5e2e1]/40');
         });
     });
 
     /* ----------------------------------------------------------
-       Menu Icon â€” toggle
+       Menu Icon — toggle
     ---------------------------------------------------------- */
     const menuIcon = document.getElementById('menu-icon');
     if (menuIcon) {
@@ -33,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ----------------------------------------------------------
-       Contact Form â€” basic submit handler
+       Contact Form — basic submit handler
     ---------------------------------------------------------- */
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
@@ -53,8 +51,13 @@ function openVideoModal(videoId) {
     const modal = document.getElementById('video-modal');
     const iframe = document.getElementById('video-iframe');
     if (modal && iframe) {
-        const origin = window.location.origin;
-        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&origin=${origin}`;
+        // Use youtube-nocookie for better privacy and compatibility
+        // Avoid sending 'null' as origin during local file testing
+        let embedUrl = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
+        if (window.location.origin !== 'null') {
+            embedUrl += '&origin=' + window.location.origin;
+        }
+        iframe.src = embedUrl;
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
     }
