@@ -1,27 +1,29 @@
 /* ============================================================
-   Darpan Studio — Main JavaScript
+   Darpan Studio â€” Main JavaScript
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ----------------------------------------------------------
-       Bottom Navigation — active state highlight
+       Bottom Navigation â€” active state highlight
     ---------------------------------------------------------- */
     const navItems = document.querySelectorAll('[data-nav]');
 
     navItems.forEach(item => {
         item.addEventListener('click', () => {
+            // Remove active state from all items
             navItems.forEach(i => {
                 i.classList.remove('text-red-600', 'font-bold', 'scale-110');
                 i.classList.add('text-[#e5e2e1]/40');
             });
+            // Apply active state to clicked item
             item.classList.add('text-red-600', 'font-bold', 'scale-110');
             item.classList.remove('text-[#e5e2e1]/40');
         });
     });
 
     /* ----------------------------------------------------------
-       Menu Icon — toggle
+       Menu Icon â€” toggle
     ---------------------------------------------------------- */
     const menuIcon = document.getElementById('menu-icon');
     if (menuIcon) {
@@ -31,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ----------------------------------------------------------
-       Contact Form — basic submit handler
+       Contact Form â€” basic submit handler
     ---------------------------------------------------------- */
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
@@ -51,13 +53,13 @@ function openVideoModal(videoId) {
     const modal = document.getElementById('video-modal');
     const iframe = document.getElementById('video-iframe');
     if (modal && iframe) {
-        // Added origin and other params to help with embedding restrictions
         const origin = window.location.origin;
-        iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1&origin=' + origin;
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&origin=${origin}`;
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
     }
-}`n
+}
+
 function closeVideoModal() {
     const modal = document.getElementById('video-modal');
     const iframe = document.getElementById('video-iframe');
