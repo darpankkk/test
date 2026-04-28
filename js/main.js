@@ -1,11 +1,11 @@
 /* ============================================================
-   Darpan Studio — Main JavaScript
+   Darpan Studio - Main JavaScript
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ----------------------------------------------------------
-       Bottom Navigation — active state highlight
+       Bottom Navigation - active state highlight
     ---------------------------------------------------------- */
     const navItems = document.querySelectorAll('[data-nav]');
 
@@ -19,18 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.remove('text-[#e5e2e1]/40');
         });
     });
-
-    /* ----------------------------------------------------------
-       Contact Form — basic submit handler
-    ---------------------------------------------------------- */
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you! Your inquiry has been received. We will be in touch shortly.');
-            contactForm.reset();
-        });
-    }
 
 });
 
@@ -60,7 +48,7 @@ function closeVideoModal() {
 
 
 /* ----------------------------------------------------------
-   Wedding Collections — WhatsApp Plan Selection
+   Wedding Collections - WhatsApp Plan Selection
 ---------------------------------------------------------- */
 const planMessages = {
     'Basic': 'Hello, I am interested in your Basic Wedding Collection package. I would like to know more details about pricing, availability, and deliverables.',
@@ -131,7 +119,7 @@ function startOfferTimer() {
         const minutes = Math.floor(timeRemaining / 60);
         const seconds = timeRemaining % 60;
 
-        timerDisplay.textContent = \\:\ mins\;
+        timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} mins`;
 
         if (timeRemaining <= 0) {
             // Reset to 10 minutes when it reaches 0
@@ -144,4 +132,3 @@ function startOfferTimer() {
 }
 
 document.addEventListener('DOMContentLoaded', startOfferTimer);
-
